@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
 const Card = () => {
-  let [addToCart, setAddToCart] = useState(false);
+  let [addToCart, setAddToCart] = useState(true);
   let [value, setValue] = useState(1);
 
   const Increment = () => setValue(value++); // increment value by 1

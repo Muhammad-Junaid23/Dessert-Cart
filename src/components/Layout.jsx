@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Grid2';
 import Cart from './Cart/Cart';
 import Card from './Card';
+import Modal from './Modal/Modal';
 
 const Layout = () => {
   return (
@@ -26,6 +27,7 @@ const Layout = () => {
           <Cart />
         </Grid2>
       </Grid2>
+      <Modal />
     </Box>
   );
 };

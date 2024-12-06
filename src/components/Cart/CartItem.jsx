@@ -20,7 +20,7 @@ const CartItem = ({ name, quantity, price }) => {
       <img
         src='/img/icon-remove-item.svg'
         alt='remove'
-        style={{ border: '1px solid hsl(14, 25%, 72%)', padding: '2px', borderRadius: '50%' }}
+        style={{ border: '1px solid hsl(14, 25%, 72%)', padding: '2px', borderRadius: '50%', cursor: 'pointer' }}
       />
     </Stack>
   );

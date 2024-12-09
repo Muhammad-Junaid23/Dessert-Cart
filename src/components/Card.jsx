@@ -15,9 +15,9 @@ const Card = () => {
   };
 
   return (
-    <Stack alignItems='start'>
+    <Stack alignItems='start' width='100%' height='auto'>
       <Box position='relative'>
-        <Box height={210} width={230} borderRadius={3} overflow='hidden'>
+        <Box width='100%' borderRadius={3} overflow='hidden'>
           <img src='img/image-waffle-desktop.jpg' height='100%' width='100%' alt='dessert' />
         </Box>
         {addToCart ? (
@@ -25,14 +25,15 @@ const Card = () => {
             direction='row'
             spacing={1}
             position='absolute'
-            bottom={-20}
-            left={40}
+            bottom={-18}
             py={1.25}
             px={3}
             border='1px solid grey'
             borderRadius={50}
             bgcolor='white'
-            sx={{ cursor: 'pointer' }}
+            width='160px'
+            left={'50%'}
+            sx={{ transform: 'translateX(-50%)' }}
           >
             <img src='img/icon-add-to-cart.svg' alt='bucket' />
             <Typography fontWeight={600} variant='subtitle2'>
@@ -46,15 +47,15 @@ const Card = () => {
             direction='row'
             spacing={1}
             position='absolute'
-            bottom={-20}
-            left={40}
+            bottom={-18}
             py={1.25}
             px={2}
             border='1px solid red'
             borderRadius={50}
             bgcolor='primary.main'
             width='160px'
-            sx={{ cursor: 'pointer' }}
+            left={'50%'}
+            sx={{ transform: 'translateX(-50%)' }}
           >
             <img
               src='img/icon-decrement-quantity.svg'

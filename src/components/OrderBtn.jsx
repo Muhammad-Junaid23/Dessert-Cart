@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 
-const OrderBtn = ({ text, bgcolor }) => {
+const OrderBtn = ({ text, bgcolor, modal, handleOpen }) => {
   return (
     <Stack
       py={2}
@@ -11,6 +11,7 @@ const OrderBtn = ({ text, bgcolor }) => {
       bgcolor={bgcolor}
       fullWidth
       sx={{ textTransform: 'capitalize', cursor: 'pointer' }}
+      onClick={modal && handleOpen}
     >
       {text}
     </Stack>

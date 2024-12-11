@@ -1,7 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 
 const ModalItem = ({ item }) => {
-  // const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   return (
     <Stack direction='row' justifyContent='space-between' alignItems='center' py={1} borderBottom='1px solid hsl(14, 20%, 84%)'>
       <Stack direction='row' spacing={2}>

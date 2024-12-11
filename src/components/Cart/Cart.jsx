@@ -1,5 +1,5 @@
-import { Box, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
+import { Box, Stack, Typography } from '@mui/material';
 import CartItem from './CartItem';
 import OrderBtn from '../OrderBtn';
 import Modale from '../Modal/Modale';
@@ -8,13 +8,15 @@ const Cart = ({ handleRemove, cart, clearCart }) => {
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
 
   return (
-    <Box p={3} pt={1.5} bgcolor='white' width='100%' borderRadius={3}>
+    <Box p={3} pt={1.5} bgcolor='white' width='100%' borderRadius={3} maxWidth={{ md: '380px', xl: '100%' }}>
       <Typography variant='h5' color='primary' pb={0.5} fontWeight={900}>
-        Your Cart (0)
+        Your Cart ({cart.length})
       </Typography>
       {cart.length === 0 ? (
         <Stack pt={4} justifyContent='center' alignItems='center' direction='column'>
@@ -25,9 +27,16 @@ const Cart = ({ handleRemove, cart, clearCart }) => {
         </Stack>
       ) : (
         <>
-          {cart.map((item) => (
-            <CartItem item={item} handleRemove={handleRemove} />
-          ))}
+          <Box
+            sx={{
+              maxHeight: '231px',
+              overflowY: 'auto',
+            }}
+          >
+            {cart.map((item) => (
+              <CartItem item={item} handleRemove={handleRemove} />
+            ))}
+          </Box>
 
           <Stack direction='row' my={2} justifyContent='space-between' alignItems='center'>
             <Typography color='rose.500' variant='subtitle1' align='center' fontWeight={100}>

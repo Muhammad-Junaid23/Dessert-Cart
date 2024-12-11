@@ -7,18 +7,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 510,
   bgcolor: 'background.paper',
-
-  boxShadow: 24,
-  p: 4,
   py: 2,
 };
 
 const Modale = ({ handleClose, open, total, cart, clearCart }) => {
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={style} bgcolor='white' px={4} borderRadius={3}>
+      <Box sx={style} width={{ xs: '95%', sm: '510px' }} bgcolor='white' px={{ xs: 2, sm: 4 }} borderRadius={3}>
         <Typography py={1}>
           <img src='img/icon-order-confirmed.svg' height={30} alt='check' />
         </Typography>
@@ -29,11 +25,11 @@ const Modale = ({ handleClose, open, total, cart, clearCart }) => {
           We hope you enjoy your food!
         </Typography>
 
-        <Stack direction='column' spacing={2} my={2} bgcolor='rose.100' borderRadius={2} p={2}>
+        <Stack direction='column' spacing={2} my={2} bgcolor='rose.100' borderRadius={2} p={{ xs: 0.5, md: 2 }}>
           <Box
             sx={{
-              maxHeight: '213px', // Limit height
-              overflowY: 'auto', // Enable vertical scrolling
+              maxHeight: '213px',
+              overflowY: 'auto',
             }}
           >
             {cart.map((item) => (
@@ -50,7 +46,7 @@ const Modale = ({ handleClose, open, total, cart, clearCart }) => {
           </Stack>
         </Stack>
 
-        <OrderBtn text='Start New Order' bgcolor='primary.main' handleCart={true} clearCart={clearCart} />
+        <OrderBtn text='Start New Order' bgcolor='primary.main' handleClose={handleClose} handleCart={true} clearCart={clearCart} />
       </Box>
     </Modal>
   );

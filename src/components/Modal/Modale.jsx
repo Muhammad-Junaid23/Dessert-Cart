@@ -15,7 +15,7 @@ const style = {
   py: 2,
 };
 
-const Modale = ({ handleClose, open }) => {
+const Modale = ({ handleClose, open, total, cart, clearCart }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style} bgcolor='white' px={4} borderRadius={3}>
@@ -36,24 +36,21 @@ const Modale = ({ handleClose, open }) => {
               overflowY: 'auto', // Enable vertical scrolling
             }}
           >
-            <ModalItem />
-            <ModalItem />
-            <ModalItem />
-            <ModalItem />
-            <ModalItem />
-            <ModalItem />
+            {cart.map((item) => (
+              <ModalItem item={item} />
+            ))}
           </Box>
           <Stack direction='row' py={1} justifyContent='space-between' alignItems='center'>
             <Typography color='rose.500' variant='subtitle1' align='center' fontWeight={100}>
               Order Total
             </Typography>
             <Typography color='rose.900' variant='h5' fontWeight={900}>
-              $46.50
+              ${total.toFixed(2)}
             </Typography>
           </Stack>
         </Stack>
 
-        <OrderBtn text='Start New Order' bgcolor='primary.main' />
+        <OrderBtn text='Start New Order' bgcolor='primary.main' handleCart={true} clearCart={clearCart} />
       </Box>
     </Modal>
   );

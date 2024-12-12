@@ -7,7 +7,7 @@ const Card = ({ item, handleDecrement, handleIncrement }) => {
     <Stack alignItems='start' width='100%' height='auto'>
       <Box position='relative'>
         <Box width='100%' borderRadius={3} overflow='hidden'>
-          <img src={item.image.desktop} height='100%' width='100%' alt='item-image' />
+          <img src={item?.image?.desktop} height='100%' width='100%' alt='item-image' />
         </Box>
         {!isAddedToCart ? (
           <Stack
@@ -58,7 +58,7 @@ const Card = ({ item, handleDecrement, handleIncrement }) => {
               }}
             />
             <Typography fontWeight={600} color='rose.100' variant='subtitle2'>
-              {item.qty}
+              {item?.qty}
             </Typography>
             <img
               src='img/icon-increment-quantity.svg'
@@ -73,13 +73,13 @@ const Card = ({ item, handleDecrement, handleIncrement }) => {
       </Box>
       <Box mt={4}>
         <Typography color='rose.500' fontWeight={500}>
-          {item.category}
+          {item?.category}
         </Typography>
         <Typography color='rose.900' fontWeight={600}>
-          {item.name}
+          {item?.name}
         </Typography>
         <Typography color='primary.main' fontWeight={600}>
-          ${item.price}
+          ${item?.price}
         </Typography>
       </Box>
     </Stack>

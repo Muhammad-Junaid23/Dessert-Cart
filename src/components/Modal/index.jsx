@@ -32,7 +32,7 @@ const Modale = ({ handleClose, open, total, cart, clearCart }) => {
               overflowY: 'auto',
             }}
           >
-            {cart.map((item) => (
+            {cart?.map((item) => (
               <ModalItem item={item} />
             ))}
           </Box>

@@ -1,7 +1,6 @@
 import { Container } from '@mui/material';
-import Layout from './components/Layout';
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Layout from './components/Layout';
 
 const theme = createTheme({
   palette: {

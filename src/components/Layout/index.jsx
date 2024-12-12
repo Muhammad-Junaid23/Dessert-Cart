@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Grid2, Box, Typography } from '@mui/material';
-import Cart from './Cart/Cart';
-import Card from './Card';
-import data from '../data.json';
+import Cart from '.././Cart';
+import Card from '.././Card';
+import data from '../../data.json';
 
 const Layout = () => {
-  const [Data, setData] = useState(data);
+  const [jsonData, setJsonData] = useState(data);
   const [cart, setCart] = useState([]);
 
   const handleIncrement = (val) => {
@@ -18,7 +18,7 @@ const Layout = () => {
       }
     });
 
-    setData((prevData) => {
+    setJsonData((prevData) => {
       return prevData.map((x) => (x.id === val.id ? { ...x, qty: (x.qty || 0) + 1 } : x));
     });
   };
@@ -33,7 +33,7 @@ const Layout = () => {
       }
     });
 
-    setData((prevData) => {
+    setJsonData((prevData) => {
       return prevData.map((x) => (x.id === val.id ? { ...x, qty: Math.max((x.qty || 0) - 1, 0) } : x));
     });
   };
@@ -41,11 +41,11 @@ const Layout = () => {
   const handleRemove = (val) => {
     setCart((prevCart) => prevCart.filter((x) => x.id !== val.id));
 
-    setData((prevData) => prevData.map((x) => (x.id === val.id ? { ...x, qty: 0 } : x)));
+    setJsonData((prevData) => prevData.map((x) => (x.id === val.id ? { ...x, qty: 0 } : x)));
   };
   const clearCart = () => {
     setCart([]);
-    setData(data);
+    setJsonData(data);
   };
 
   return (
@@ -56,7 +56,7 @@ const Layout = () => {
             Desserts
           </Typography>
           <Grid2 container gap={2} spacing={2} direction={{ direction: { xs: 'column' } }} mb={5}>
-            {Data.map((item, index) => (
+            {jsonData.map((item, index) => (
               <Grid2 key={index} size={{ xs: 12, sm: 6, lg: 4 }}>
                 <Card item={item} handleIncrement={handleIncrement} handleDecrement={handleDecrement} />
               </Grid2>

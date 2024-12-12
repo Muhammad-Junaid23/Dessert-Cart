@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import CartItem from './CartItem';
 import OrderBtn from '../OrderBtn';
-import Modale from '../Modal/Modale';
+import Modale from '.././Modal';
 
 const Cart = ({ handleRemove, cart, clearCart }) => {
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -16,9 +16,9 @@ const Cart = ({ handleRemove, cart, clearCart }) => {
   return (
     <Box p={3} pt={1.5} bgcolor='white' width='100%' borderRadius={3} maxWidth={{ md: '380px', xl: '100%' }}>
       <Typography variant='h5' color='primary' pb={0.5} fontWeight={900}>
-        Your Cart ({cart.length})
+        Your Cart ({cart?.length})
       </Typography>
-      {cart.length === 0 ? (
+      {cart?.length === 0 ? (
         <Stack pt={4} justifyContent='center' alignItems='center' direction='column'>
           <img src='/img/illustration-empty-cart.svg' alt='empty cart' />
           <Typography py={2} color='rose.500' variant='subtitle2' align='center' fontWeight={600}>
@@ -33,7 +33,7 @@ const Cart = ({ handleRemove, cart, clearCart }) => {
               overflowY: 'auto',
             }}
           >
-            {cart.map((item) => (
+            {cart?.map((item) => (
               <CartItem item={item} handleRemove={handleRemove} />
             ))}
           </Box>

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
-import CartItem from './CartItem';
+import CartItem from './Item';
 import OrderBtn from '../OrderBtn';
 import Modale from '.././Modal';
 
-const Cart = ({ handleRemove, cart, clearCart }) => {
+const Cart = ({ handleRemove, jsonData, clearCart }) => {
+  const cart = jsonData.filter((item) => item.qty > 0);
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const [open, setOpen] = useState(false);
@@ -47,9 +48,13 @@ const Cart = ({ handleRemove, cart, clearCart }) => {
             </Typography>
           </Stack>
           <Stack direction='row' justifyContent='center' alignItems='start' px={2} my={2} borderRadius={2.5} py={1.5} bgcolor='rose.100'>
-            <img src='img/icon-carbon-neutral.svg' alt='tree' />
+            <img src='img/icon-carbon-neutral.svg' alt='tree' style={{ cursor: 'pointer' }} />
             <Typography pl={0.5} color='rose.500' variant='subtitle2' fontWeight={100}>
-              This is a <strong>carbon-neutral</strong> delivery
+              This is a{' '}
+              <Typography variant='body2' component={'span'} fontWeight={600}>
+                carbon-neutral{' '}
+              </Typography>
+              delivery
             </Typography>
           </Stack>
           <OrderBtn text='Confirm Order' modal={true} handleOpen={handleOpen} bgcolor='primary.main' />

@@ -1,23 +1,32 @@
-import { Box, Stack, Typography, Modal } from '@mui/material';
+import { Box, Stack, Typography, Modal as MuiModal, IconButton } from '@mui/material';
 import OrderBtn from '../OrderBtn';
-import ModalItem from './ModalItem';
+import ModalItem from './Item';
 
 const style = {
   position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  top: { xs: '', sm: '50%' },
+  left: { xs: '0%', sm: '50%' },
+  bottom: { xs: '0', sm: '-33%' },
+  transform: { xs: 'translate(0%, 0%)', sm: 'translate(-50%, -50%)' },
   bgcolor: 'background.paper',
   py: 2,
 };
 
-const Modale = ({ handleClose, open, total, cart, clearCart }) => {
+const Modal = ({ handleClose, open, total, cart, clearCart }) => {
   return (
-    <Modal open={open} onClose={handleClose}>
-      <Box sx={style} width={{ xs: '95%', sm: '510px' }} bgcolor='white' px={{ xs: 2, sm: 4 }} borderRadius={3}>
-        <Typography py={1}>
+    <MuiModal open={open} onClose={handleClose}>
+      <Box
+        sx={style}
+        width={{ xs: '100%', sm: '510px' }}
+        height={'fit-content'}
+        maxHeight={'550px'}
+        bgcolor='white'
+        px={{ xs: 2, sm: 4 }}
+        borderRadius={3}
+      >
+        <IconButton sx={{ ml: '-8px' }}>
           <img src='img/icon-order-confirmed.svg' height={30} alt='check' />
-        </Typography>
+        </IconButton>
         <Typography variant='h5' fontWeight={900}>
           Order Confirmed
         </Typography>
@@ -46,10 +55,10 @@ const Modale = ({ handleClose, open, total, cart, clearCart }) => {
           </Stack>
         </Stack>
 
-        <OrderBtn text='Start New Order' bgcolor='primary.main' handleClose={handleClose} handleCart={true} clearCart={clearCart} />
+        <OrderBtn text='Start New Order' handleClose={handleClose} handleCart={true} clearCart={clearCart} />
       </Box>
-    </Modal>
+    </MuiModal>
   );
 };
 
-export default Modale;
+export default Modal;

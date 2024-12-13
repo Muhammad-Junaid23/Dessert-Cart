@@ -1,4 +1,5 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const CartItem = ({ item, handleRemove }) => {
   return (
@@ -17,12 +18,9 @@ const CartItem = ({ item, handleRemove }) => {
           </Typography>
         </Stack>
       </Box>
-      <img
-        src='/img/icon-remove-item.svg'
-        alt='remove'
-        style={{ border: '1px solid hsl(14, 25%, 72%)', padding: '2px', borderRadius: '50%', cursor: 'pointer' }}
-        onClick={() => handleRemove(item)}
-      />
+      <IconButton onClick={() => handleRemove(item)}>
+        <CancelOutlinedIcon fontSize='small' color='secondary' sx={{ '&:hover': { color: 'rose.900' } }} />
+      </IconButton>
     </Stack>
   );
 };

@@ -2,24 +2,24 @@ import { useState } from 'react';
 import { Grid2, Box, Typography } from '@mui/material';
 import Cart from '.././Cart';
 import Card from '.././Card';
-import data from '../../data.json';
+import inventoryData from '../../data.json';
 
 const Layout = () => {
-  const [jsonData, setJsonData] = useState(data);
+  const [inventory, setInventory] = useState(inventoryData);
 
   const handleIncrement = (itemId) => {
-    setJsonData((prevData) => prevData.map((item) => (item.id === itemId ? { ...item, qty: item.qty + 1 } : item)));
+    setInventory((prevData) => prevData.map((item) => (item.id === itemId ? { ...item, qty: item.qty + 1 } : item)));
   };
 
   const handleDecrement = (itemId) => {
-    setJsonData((prevData) => prevData.map((item) => (item.id === itemId && item.qty > 0 ? { ...item, qty: item.qty - 1 } : item)));
+    setInventory((prevData) => prevData.map((item) => (item.id === itemId && item.qty > 0 ? { ...item, qty: item.qty - 1 } : item)));
   };
 
   const handleRemove = (val) => {
-    setJsonData((prevData) => prevData.map((x) => (x.id === val.id ? { ...x, qty: 0 } : x)));
+    setInventory((prevData) => prevData.map((x) => (x.id === val.id ? { ...x, qty: 0 } : x)));
   };
   const clearCart = () => {
-    setJsonData(data);
+    setInventory(inventoryData);
   };
 
   return (
@@ -30,7 +30,7 @@ const Layout = () => {
             Desserts
           </Typography>
           <Grid2 container gap={2} spacing={2} direction={{ direction: { xs: 'column' } }} mb={5}>
-            {jsonData.map((item, index) => (
+            {inventory.map((item, index) => (
               <Grid2 key={index} size={{ xs: 12, sm: 6, lg: 4 }}>
                 <Card item={item} handleIncrement={handleIncrement} handleDecrement={handleDecrement} />
               </Grid2>
@@ -38,7 +38,7 @@ const Layout = () => {
           </Grid2>
         </Grid2>
         <Grid2 size={{ xs: 12, md: 4 }} position={{ md: 'fixed', xl: 'static' }} right={{ md: '1rem' }}>
-          <Cart jsonData={jsonData} handleRemove={handleRemove} clearCart={clearCart} />
+          <Cart inventory={inventory} handleRemove={handleRemove} clearCart={clearCart} />
         </Grid2>
       </Grid2>
     </Box>

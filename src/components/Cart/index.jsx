@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import CartItem from './Item';
 import OrderBtn from '../OrderBtn';
-import Modale from '.././Modal';
+import Modal from '.././Modal';
 
-const Cart = ({ handleRemove, jsonData, clearCart }) => {
-  const cart = jsonData.filter((item) => item.qty > 0);
+const Cart = ({ handleRemove, inventory, clearCart }) => {
+  const cart = inventory.filter((item) => item.qty > 0);
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ const Cart = ({ handleRemove, jsonData, clearCart }) => {
             </Typography>
           </Stack>
           <OrderBtn text='Confirm Order' modal={true} handleOpen={handleOpen} bgcolor='primary.main' />
-          <Modale handleClose={handleClose} open={open} cart={cart} total={total} clearCart={clearCart} />
+          <Modal handleClose={handleClose} open={open} cart={cart} total={total} clearCart={clearCart} />
         </>
       )}
     </Box>

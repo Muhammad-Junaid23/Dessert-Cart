@@ -17,7 +17,7 @@ const OrderBtn = ({ text, modal, handleOpen, handleClose, handleCart, clearCart 
       onClick={() => {
         if (modal && handleOpen) handleOpen();
         if (handleCart && clearCart) clearCart();
-        handleClose();
+        handleClose && handleClose();
       }}
       sx={btnStyle}
       fullWidth

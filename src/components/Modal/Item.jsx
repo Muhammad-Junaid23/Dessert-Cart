@@ -5,7 +5,7 @@ const ModalItem = ({ item }) => {
     <Stack direction='row' justifyContent='space-between' alignItems='center' py={1} borderBottom='1px solid hsl(14, 20%, 84%)'>
       <Stack direction='row' spacing={2}>
         <Box height={50} width={50} borderRadius={1} overflow='hidden'>
-          <img src={item?.image?.thumbnail} height='100%' width='100%' alt='modalimg' />
+          <img src={item?.image?.thumbnail} height='100%' width='100%' alt='modalimg' style={{ cursor: 'pointer', userSelect: 'none' }} />
         </Box>
         <Box>
           <Typography color='rose.900' variant='subtitle2' fontWeight={600}>

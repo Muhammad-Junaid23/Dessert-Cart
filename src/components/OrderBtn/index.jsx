@@ -1,24 +1,29 @@
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 
-const OrderBtn = ({ text, bgcolor, modal, handleOpen, handleClose, handleCart, clearCart }) => {
+const btnStyle = {
+  py: 1.7,
+  borderRadius: 10,
+  color: 'white',
+  textAlign: 'center',
+  fontWeight: 600,
+  bgcolor: 'primary.main',
+  textTransform: 'capitalize',
+  cursor: 'pointer',
+};
+
+const OrderBtn = ({ text, modal, handleOpen, handleClose, handleCart, clearCart }) => {
   return (
-    <Stack
-      py={2}
-      borderRadius={10}
-      color='white'
-      textAlign={'center'}
-      fontWeight={600}
-      bgcolor={bgcolor}
-      fullwidth
-      sx={{ textTransform: 'capitalize', cursor: 'pointer' }}
+    <Button
       onClick={() => {
         if (modal && handleOpen) handleOpen();
         if (handleCart && clearCart) clearCart();
         handleClose();
       }}
+      sx={btnStyle}
+      fullWidth
     >
       {text}
-    </Stack>
+    </Button>
   );
 };
 

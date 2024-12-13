@@ -6,45 +6,19 @@ import data from '../../data.json';
 
 const Layout = () => {
   const [jsonData, setJsonData] = useState(data);
-  const [cart, setCart] = useState([]);
 
-  const handleIncrement = (val) => {
-    setCart((prevCart) => {
-      const exist = prevCart.find((x) => x.id === val.id);
-      if (exist) {
-        return prevCart.map((x) => (x.id === val.id ? { ...x, qty: x.qty + 1 } : x));
-      } else {
-        return [...prevCart, { ...val, qty: 1 }];
-      }
-    });
-
-    setJsonData((prevData) => {
-      return prevData.map((x) => (x.id === val.id ? { ...x, qty: (x.qty || 0) + 1 } : x));
-    });
+  const handleIncrement = (itemId) => {
+    setJsonData((prevData) => prevData.map((item) => (item.id === itemId ? { ...item, qty: item.qty + 1 } : item)));
   };
 
-  const handleDecrement = (val) => {
-    setCart((prevCart) => {
-      const exist = prevCart.find((x) => x.id === val.id);
-      if (exist && exist.qty > 1) {
-        return prevCart.map((x) => (x.id === val.id ? { ...x, qty: x.qty - 1 } : x));
-      } else {
-        return prevCart.filter((x) => x.id !== val.id); // Remove item if qty is 1
-      }
-    });
-
-    setJsonData((prevData) => {
-      return prevData.map((x) => (x.id === val.id ? { ...x, qty: Math.max((x.qty || 0) - 1, 0) } : x));
-    });
+  const handleDecrement = (itemId) => {
+    setJsonData((prevData) => prevData.map((item) => (item.id === itemId && item.qty > 0 ? { ...item, qty: item.qty - 1 } : item)));
   };
 
   const handleRemove = (val) => {
-    setCart((prevCart) => prevCart.filter((x) => x.id !== val.id));
-
     setJsonData((prevData) => prevData.map((x) => (x.id === val.id ? { ...x, qty: 0 } : x)));
   };
   const clearCart = () => {
-    setCart([]);
     setJsonData(data);
   };
 
@@ -64,7 +38,7 @@ const Layout = () => {
           </Grid2>
         </Grid2>
         <Grid2 size={{ xs: 12, md: 4 }} position={{ md: 'fixed', xl: 'static' }} right={{ md: '1rem' }}>
-          <Cart cart={cart} handleRemove={handleRemove} clearCart={clearCart} />
+          <Cart jsonData={jsonData} handleRemove={handleRemove} clearCart={clearCart} />
         </Grid2>
       </Grid2>
     </Box>

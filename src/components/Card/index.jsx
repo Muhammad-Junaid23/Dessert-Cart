@@ -1,74 +1,101 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, IconButton, Button } from '@mui/material';
+import ControlPointOutlinedIcon from '@mui/icons-material/ControlPointOutlined';
+import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const Card = ({ item, handleDecrement, handleIncrement }) => {
   const isAddedToCart = item.qty > 0;
 
+  const cartBtnStyle = {
+    position: 'absolute',
+    bottom: -18,
+    py: 1.25,
+    px: 3,
+    border: '1px solid grey',
+    borderRadius: 50,
+    bgcolor: 'white',
+    width: '160px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  };
+
   return (
     <Stack alignItems='start' width='100%' height='auto'>
       <Box position='relative'>
-        <Box width='100%' borderRadius={3} overflow='hidden'>
-          <img src={item?.image?.desktop} height='100%' width='100%' alt='item-image' />
+        <Box
+          width='100%'
+          height={'100%'}
+          borderRadius={3}
+          overflow='hidden'
+          sx={{
+            outline: item.qty > 0 ? '2px solid red' : 'none',
+          }}
+        >
+          <img
+            src={item?.image?.desktop ?? '/img/illustration-empty-cart.svg'}
+            height='100%'
+            width='100%'
+            alt='item-image'
+            style={{ cursor: 'pointer', userSelect: 'none', display: 'block' }}
+          />
         </Box>
         {!isAddedToCart ? (
-          <Stack
-            direction='row'
-            spacing={1}
-            position='absolute'
-            bottom={-18}
-            py={1.25}
-            px={3}
-            border='1px solid grey'
-            borderRadius={50}
-            bgcolor='white'
-            width='160px'
-            left={'50%'}
-            sx={{ transform: 'translateX(-50%)', cursor: 'pointer' }}
+          <Button
+            sx={cartBtnStyle}
+            variant='contained'
+            startIcon={<AddShoppingCartIcon fontSize={'small'} sx={{ color: 'primary.main' }} />}
             onClick={() => {
-              handleIncrement(item);
+              handleIncrement(item.id);
             }}
           >
-            <img src='img/icon-add-to-cart.svg' alt='bucket' />
-            <Typography fontWeight={600} variant='subtitle2'>
+            <Typography fontWeight={600} variant='body2' color='rose.900' textTransform={'capitalize'}>
               Add to Cart
             </Typography>
-          </Stack>
+          </Button>
         ) : (
-          <Stack
-            justifyContent='space-between'
-            alignItems='center'
-            direction='row'
-            spacing={1}
-            position='absolute'
-            bottom={-18}
-            py={1.25}
-            px={2}
-            border='1px solid red'
-            borderRadius={50}
-            bgcolor='primary.main'
-            width='160px'
-            left={'50%'}
-            sx={{ transform: 'translateX(-50%)', cursor: 'pointer' }}
+          <Button
+            sx={{
+              ...cartBtnStyle,
+              bgcolor: 'primary.main',
+              width: '150px',
+            }}
+            variant='contained'
+            startIcon={
+              <RemoveCircleOutlineOutlinedIcon
+                fontSize={'small'}
+                sx={{
+                  color: 'rose.100',
+                  '&:hover': {
+                    bgcolor: 'white',
+                    color: 'primary.main',
+                    borderRadius: '50%',
+                  },
+                }}
+                onClick={() => {
+                  handleDecrement(item.id);
+                }}
+              />
+            }
+            endIcon={
+              <ControlPointOutlinedIcon
+                sx={{
+                  color: 'rose.100',
+                  '&:hover': {
+                    bgcolor: 'white',
+                    color: 'primary.main',
+                    borderRadius: '50%',
+                  },
+                }}
+                onClick={() => {
+                  handleIncrement(item.id);
+                }}
+              />
+            }
           >
-            <img
-              src='img/icon-decrement-quantity.svg'
-              alt='minus'
-              style={{ border: '1px solid hsl(14, 25%, 72%)', padding: '6px 2px', borderRadius: '50%' }}
-              onClick={() => {
-                handleDecrement(item);
-              }}
-            />
-            <Typography fontWeight={600} color='rose.100' variant='subtitle2'>
+            <Typography fontWeight={600} color='rose.100' variant='subtitle2' width={'50px'}>
               {item?.qty}
             </Typography>
-            <img
-              src='img/icon-increment-quantity.svg'
-              alt='plus'
-              style={{ border: '1px solid hsl(14, 25%, 72%)', padding: '2px 2px', borderRadius: '50%' }}
-              onClick={() => {
-                handleIncrement(item);
-              }}
-            />
-          </Stack>
+          </Button>
         )}
       </Box>
       <Box mt={4}>

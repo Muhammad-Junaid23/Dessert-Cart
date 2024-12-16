@@ -22,13 +22,13 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorUser, setAnchorUser] = useState(null);
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorUser(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorUser(null);
   };
 
   return (
@@ -40,7 +40,7 @@ function Navbar() {
             variant='h6'
             noWrap
             component='a'
-            href='#app-bar-with-responsive-menu'
+            href='#'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -98,7 +98,7 @@ function Navbar() {
             <Menu
               sx={{ mt: '45px' }}
               id='menu-appbar'
-              anchorEl={anchorElUser}
+              anchorEl={anchorUser}
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
@@ -108,7 +108,7 @@ function Navbar() {
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorElUser)}
+              open={Boolean(anchorUser)}
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (

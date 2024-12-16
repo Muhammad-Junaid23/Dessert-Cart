@@ -1,23 +1,8 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { IconButton, Stack, Typography } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { IconButton, Stack, Typography, Box, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-
-// const pages = [
-//   { name: 'Home', path: '/' },
-//   { name: 'About', path: '/About' },
-//   { name: 'Blogs', path: '/blogs' },
-// ];
 
 export default function Sidebar({ pages }) {
   const [open, setOpen] = useState(false);

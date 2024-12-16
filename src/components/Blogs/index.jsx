@@ -9,7 +9,6 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -55,11 +54,11 @@ const Blogs = () => {
         <Typography>This is Blogs page. In this page you will see the blogs of Foodie App.</Typography>
       </Box>
 
-      <Stack direction={'row'} spacing={3} ml={2}>
+      <Stack direction={'row'} spacing={3} ml={2} mb={2}>
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
             avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label='recipe'>
+              <Avatar sx={{ bgcolor: 'primary.main' }} aria-label='recipe'>
                 R
               </Avatar>
             }
@@ -116,7 +115,7 @@ const Blogs = () => {
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
             avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label='recipe'>
+              <Avatar sx={{ bgcolor: 'primary.main' }} aria-label='recipe'>
                 V
               </Avatar>
             }

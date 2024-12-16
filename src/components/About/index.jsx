@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const About = () => {
   const [expanded, setExpanded] = useState(false);
@@ -20,52 +16,29 @@ const About = () => {
         </Typography>
         <Typography>This is About page. In this page you will get the details of Foodie App.</Typography>
       </Box>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1bh-content' id='panel1bh-header'>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>General settings</Typography>
-          <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget maximus est, id dignissim quam.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel2bh-content' id='panel2bh-header'>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
-          <Typography sx={{ color: 'text.secondary' }}>You are currently not an owner</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-            laoreet laoreet.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel3bh-content' id='panel3bh-header'>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Advanced settings</Typography>
-          <Typography sx={{ color: 'text.secondary' }}>Filtering has been entirely disabled for whole web server</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-            augue.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel4bh-content' id='panel4bh-header'>
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Personal data</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-            augue.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+
+      <Box m={2}>
+        <Typography>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus corporis perspiciatis, impedit necessitatibus vero
+          inventore ea eaque tempora excepturi itaque perferendis sint debitis voluptatibus odio, quos, autem rem. Sequi eum architecto,
+          minus perspiciatis nihil quos vitae in. Soluta, quo eligendi. Eveniet, cum! Ullam suscipit vel, nemo at qui obcaecati totam quos
+          dolorem illo a laboriosam quaerat quasi sed quia porro quibusdam nostrum ipsum quam recusandae quis nihil eligendi! Sequi nihil
+          magnam exercitationem sed earum necessitatibus cupiditate animi laboriosam facilis enim deserunt aliquam eum, numquam deleniti
+          voluptatibus odio totam amet, natus iusto ad placeat perferendis ea eius libero? Delectus, ipsa?Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Mollitia maiores excepturi asperiores quis reprehenderit iure laborum. Voluptates unde voluptas enim
+          dicta possimus itaque, rem quae corrupti nesciunt animi. Iure assumenda, blanditiis, corrupti quaerat reiciendis neque fuga natus,
+          voluptates enim exercitationem mollitia praesentium! Repellat, autem illo adipisci sunt voluptatum porro dicta velit. Consequuntur
+          voluptatum ad perspiciatis? Ullam incidunt et quos molestias dignissimos. Fugiat alias recusandae rerum sint eius temporibus,
+          excepturi illo deleniti nisi harum ullam sed! Et velit, sunt ullam, quo dolore, labore reprehenderit quae sapiente voluptates
+          eligendi vel qui necessitatibus voluptatibus delectus tempora natus deserunt suscipit animi accusamus! Libero non earum cupiditate
+          laboriosam a aliquid voluptatum quisquam, aut modi accusantium velit veritatis nulla quasi cum, expedita fuga quaerat quae. Itaque
+          eum eveniet, illum cum quam hic delectus beatae libero distinctio expedita, nulla quae aliquid provident? Asperiores odit sit
+          quasi deserunt voluptatibus earum esse hic, ex culpa. Nam reiciendis magni, porro aperiam omnis unde facere assumenda dignissimos
+          dolores in ipsam ullam, ducimus accusantium? Ipsum corporis impedit quae modi doloribus quidem deleniti omnis alias eaque rerum
+          autem provident consequatur iusto, sint sed ea aliquam, quaerat quis odio possimus temporibus iste laboriosam earum. Voluptatum
+          minima suscipit adipisci, et eligendi atque obcaecati esse maxime!
+        </Typography>
+      </Box>
     </Box>
   );
 };

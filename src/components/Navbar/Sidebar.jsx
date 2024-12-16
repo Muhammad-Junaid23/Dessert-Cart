@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { NavLink } from 'react-router';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -13,7 +13,13 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function Sidebar() {
+// const pages = [
+//   { name: 'Home', path: '/' },
+//   { name: 'About', path: '/About' },
+//   { name: 'Blogs', path: '/blogs' },
+// ];
+
+export default function Sidebar({ pages }) {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -30,7 +36,6 @@ export default function Sidebar() {
           href='#'
           sx={{
             mr: 2,
-            // fontFamily: 'monospace',
             fontWeight: 900,
             letterSpacing: '.1rem',
             color: 'black',
@@ -45,11 +50,19 @@ export default function Sidebar() {
       </Stack>
       <Box sx={{ width: 250 }} role='presentation' onClick={toggleDrawer(false)}>
         <List>
-          {['Home', 'About', 'Blogs'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {pages.map((page, index) => (
+            <ListItem key={page} disablePadding>
               <ListItemButton>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+                <NavLink
+                  to={page.path}
+                  key={page.name}
+                  style={({ isActive }) => ({
+                    textDecoration: 'none',
+                    color: isActive ? 'Black' : 'Grey',
+                  })}
+                >
+                  <ListItemText primary={page.name} />
+                </NavLink>
               </ListItemButton>
             </ListItem>
           ))}

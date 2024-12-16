@@ -43,7 +43,7 @@ const App = () => {
           <Route path="about" element={<About />} />
           </Routes> */}
       <Layout />
-      {/* <Footer /> */}
+      <Footer />
       {/* </BrowserRouter> */}
     </ThemeProvider>
   );

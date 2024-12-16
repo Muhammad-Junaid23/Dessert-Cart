@@ -1,8 +1,10 @@
+import { BrowserRouter, Route, Routes } from 'react-router';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Layout from './components/Layout';
 import Navbar from './components/Navbar';
+import Layout from './components/Layout';
+import About from './components/About';
+import Blogs from './components/Blogs';
 import Footer from './components/Footer';
-// import { BrowserRouter } from 'react-router';
 
 const theme = createTheme({
   palette: {
@@ -36,15 +38,15 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      {/* <BrowserRouter> */}
-      <Navbar />
-      {/* <Routes>
-  <Route index element={ <Layout />} />
-          <Route path="about" element={<About />} />
-          </Routes> */}
-      <Layout />
-      <Footer />
-      {/* </BrowserRouter> */}
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route index element={<Layout />} />
+          <Route path='about' element={<About />} />
+          <Route path='blogs' element={<Blogs />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,23 +14,18 @@ import MenuItem from '@mui/material/MenuItem';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import Sidebar from './Sidebar';
 
-const pages = ['Home', 'About', 'Blogs'];
+const pages = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/About' },
+  { name: 'Blogs', path: '/blogs' },
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
-  //   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-
-  //   const handleOpenNavMenu = (event) => {
-  //     setAnchorElNav(event.currentTarget);
-  //   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
-  //   const handleCloseNavMenu = () => {
-  //     setAnchorElNav(null);
-  //   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -57,7 +53,7 @@ function Navbar() {
           >
             Foodie
           </Typography>
-          <Sidebar />
+          <Sidebar pages={pages} />
 
           <FastfoodIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -69,9 +65,8 @@ function Navbar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -81,7 +76,16 @@ function Navbar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
-                {page}
+                <NavLink
+                  to={page.path}
+                  key={page.name}
+                  style={({ isActive }) => ({
+                    textDecoration: 'none',
+                    color: isActive ? 'yellow' : 'white',
+                  })}
+                >
+                  {page.name}
+                </NavLink>
               </Button>
             ))}
           </Box>
